@@ -1168,7 +1168,7 @@ section.modular-hero.hero {
 @media (max-width: 840px) {
     #header {
         height: 70px !important; /* Kompakte Höhe */
-        background: #ffffff !important; /* Immer Weiß */
+        background: #f2f2f2 !important; /* Immer Weiß */
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
@@ -2465,7 +2465,7 @@ body.mobile-nav-open #mob-backdrop {
         width: min(380px, 88vw) !important;
         height: 100% !important;
         max-height: 100vh;
-        background: #ffffff !important;
+        background: #f2f2f2 !important;
         opacity: 1 !important;
         visibility: hidden;
         transform: translateX(110%);
@@ -2500,8 +2500,8 @@ body.mobile-nav-open #mob-backdrop {
         align-items: center !important;
         justify-content: space-between !important;
         padding: 1rem 1.25rem !important;
-        border-bottom: 2px solid #f0f0f0;
-        background: white;
+        border-bottom: 2px solid #ddd;
+        background: #f2f2f2;
         flex-shrink: 0;
     }
 
@@ -2516,8 +2516,8 @@ body.mobile-nav-open #mob-backdrop {
     .mob-close-btn {
         width: 40px;
         height: 40px;
-        border: 2px solid #eee;
-        background: white;
+        border: 2px solid #ccc;
+        background: #e4e4e4;
         border-radius: 50%;
         cursor: pointer;
         display: flex;
@@ -2568,7 +2568,7 @@ body.mobile-nav-open #mob-backdrop {
         text-decoration: none !important;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        background: white;
+        background: #f2f2f2;
         transition: color 0.2s, background 0.2s, border-left 0.2s;
     }
 
@@ -2586,9 +2586,9 @@ body.mobile-nav-open #mob-backdrop {
 
     /* Sub-menu container */
     .overlay-menu ul ul {
-        background: #f8f8f8;
-        border-top: 1px solid #ebebeb;
-        padding: 0.25rem 0 !important;
+        background: #e8e8e8;
+        border-top: 1px solid #d8d8d8;
+        padding: 0 !important;
     }
 
     /* Sub-menu links */
@@ -2599,15 +2599,15 @@ body.mobile-nav-open #mob-backdrop {
         font-weight: 500 !important;
         color: #444 !important;
         text-decoration: none !important;
-        border-bottom: 1px solid #ebebeb;
+        border-bottom: 1px solid #d8d8d8;
         transition: color 0.2s, background 0.2s;
-        background: transparent;
+        background: #e8e8e8;
         text-transform: none;
     }
 
     .overlay-menu ul ul li a:hover {
         color: var(--c-green) !important;
-        background: #f0f4e0;
+        background: #dce6b8;
     }
 
     .overlay-menu ul ul li:last-child a {
@@ -2651,8 +2651,8 @@ body.mobile-nav-open #mob-backdrop {
     /* --- DRAWER FOOTER (CTA) --- */
     .mob-drawer-footer {
         padding: 1.5rem;
-        border-top: 2px solid #f0f0f0;
-        background: #fafafa;
+        border-top: 2px solid #d8d8d8;
+        background: #e4e4e4;
         display: flex;
         flex-direction: column;
         gap: 0.875rem;
@@ -2667,8 +2667,8 @@ body.mobile-nav-open #mob-backdrop {
         text-decoration: none;
         padding: 0.6rem;
         border-radius: 8px;
-        background: white;
-        border: 1px solid #eee;
+        background: #d8d8d8;
+        border: 1px solid #ccc;
         transition: color 0.2s;
     }
 
