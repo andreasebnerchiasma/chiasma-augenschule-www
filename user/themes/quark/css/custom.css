@@ -2422,7 +2422,7 @@ section.modular-hero.hero {
 }
 
 /* =====================================================
-   MOBILE NAVIGATION — Slide-in Drawer (Modern v2)
+   MOBILE NAVIGATION — Slide-in Drawer (Modern v3)
    ===================================================== */
 
 /* --- BACKDROP --- */
@@ -2614,32 +2614,38 @@ body.mobile-nav-open #mob-backdrop {
         border-bottom: none;
     }
 
-    /* Hide the "+" treemenu toggle (replaced by arrow on parent) */
-    .overlay-menu .treeview-toggle {
+    /* ---- TREEMENU FIXES ---- */
+
+    /* Hide the "+" toggler button (class is .toggler, not .treeview-toggle) */
+    .overlay-menu .toggler {
         display: none !important;
     }
 
-    /* Arrow indicator on expandable parents */
-    .overlay-menu > ul > li > a::after {
-        content: '›';
-        font-size: 1.5rem;
-        color: #ccc;
-        font-weight: 300;
-        line-height: 1;
-        transition: transform 0.25s ease, color 0.2s;
-        display: inline-block;
+    /* Always show submenus expanded — no toggle needed on mobile */
+    .overlay-menu ul ul {
+        display: block !important;
+        height: auto !important;
+        overflow: visible !important;
     }
 
-    /* If no sub-pages, no arrow */
-    .overlay-menu > ul > li:not(.has-children) > a::after {
-        content: '';
+    /* Remove ALL bullet dots from list items */
+    .overlay-menu ul,
+    .overlay-menu ul li {
+        list-style: none !important;
+        list-style-type: none !important;
     }
 
-    /* Arrow rotates when open */
-    .overlay-menu > ul > li > a.active::after,
-    .overlay-menu > ul > li.active > a::after {
-        transform: rotate(90deg);
-        color: var(--c-green);
+    .overlay-menu ul li::marker,
+    .overlay-menu ul li::before {
+        content: none !important;
+        display: none !important;
+    }
+
+    /* Fix active link color — override Quark's blue */
+    .overlay-menu a.active,
+    .overlay-menu .active > a,
+    .overlay-menu li.active > a {
+        color: var(--c-green) !important;
     }
 
     /* --- DRAWER FOOTER (CTA) --- */
