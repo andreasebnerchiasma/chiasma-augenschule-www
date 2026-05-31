@@ -2420,3 +2420,282 @@ section.modular-hero.hero {
         font-size: 1.5rem;
     }
 }
+
+/* =====================================================
+   MOBILE NAVIGATION — Slide-in Drawer (Modern v2)
+   ===================================================== */
+
+/* --- BACKDROP --- */
+#mob-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 9988;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+body.mobile-nav-open #mob-backdrop {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+/* --- MOBILE CONTAINER RESET --- */
+.mobile-container {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    z-index: auto !important;
+    margin: 0 !important;
+}
+
+/* --- DRAWER PANEL (override Quark full-screen overlay) --- */
+@media (max-width: 840px) {
+    .overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: auto !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: min(380px, 88vw) !important;
+        height: 100% !important;
+        max-height: 100vh;
+        background: #ffffff !important;
+        opacity: 1 !important;
+        visibility: hidden;
+        transform: translateX(110%);
+        transition:
+            transform 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+            visibility 0s linear 0.38s,
+            box-shadow 0.38s ease !important;
+        overflow-y: auto;
+        overflow-x: hidden;
+        z-index: 9995 !important;
+        display: flex !important;
+        flex-direction: column;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .overlay.open {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateX(0) !important;
+        height: 100% !important;
+        box-shadow: -12px 0 50px rgba(0, 0, 0, 0.2) !important;
+        transition:
+            transform 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+            visibility 0s linear 0s,
+            box-shadow 0.38s ease !important;
+    }
+
+    /* --- DRAWER HEADER (Logo + Close) --- */
+    .mobile-logo {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 1rem 1.25rem !important;
+        border-bottom: 2px solid #f0f0f0;
+        background: white;
+        flex-shrink: 0;
+    }
+
+    .mobile-logo svg,
+    .mobile-logo img {
+        height: 50px !important;
+        width: auto !important;
+        margin: 0 !important;
+    }
+
+    /* --- CLOSE BUTTON --- */
+    .mob-close-btn {
+        width: 40px;
+        height: 40px;
+        border: 2px solid #eee;
+        background: white;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #444;
+        flex-shrink: 0;
+        transition: background 0.2s, border-color 0.2s, color 0.2s;
+        padding: 0;
+    }
+
+    .mob-close-btn:hover {
+        background: var(--c-red);
+        border-color: var(--c-red);
+        color: white;
+    }
+
+    /* --- NAV AREA --- */
+    .overlay-menu {
+        flex: 1;
+        overflow-y: auto;
+        height: auto !important;
+        padding: 0.5rem 0 1rem 0;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Reset Quark tree defaults */
+    .overlay-menu ul,
+    .overlay-menu ul.tree {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Top-level items */
+    .overlay-menu > ul > li {
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .overlay-menu > ul > li > a {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem 1.5rem !important;
+        font-size: 1.2rem !important;
+        font-weight: 700 !important;
+        color: #111 !important;
+        text-decoration: none !important;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        background: white;
+        transition: color 0.2s, background 0.2s, border-left 0.2s;
+    }
+
+    .overlay-menu > ul > li > a:hover {
+        color: var(--c-green) !important;
+        background: #f8fbef;
+    }
+
+    .overlay-menu > ul > li.active > a {
+        color: var(--c-green) !important;
+        background: #f8fbef;
+        border-left: 4px solid var(--c-green);
+        padding-left: calc(1.5rem - 4px) !important;
+    }
+
+    /* Sub-menu container */
+    .overlay-menu ul ul {
+        background: #f8f8f8;
+        border-top: 1px solid #ebebeb;
+        padding: 0.25rem 0 !important;
+    }
+
+    /* Sub-menu links */
+    .overlay-menu ul ul li a {
+        display: block !important;
+        padding: 0.9rem 1.5rem 0.9rem 2.25rem !important;
+        font-size: 1rem !important;
+        font-weight: 500 !important;
+        color: #444 !important;
+        text-decoration: none !important;
+        border-bottom: 1px solid #ebebeb;
+        transition: color 0.2s, background 0.2s;
+        background: transparent;
+        text-transform: none;
+    }
+
+    .overlay-menu ul ul li a:hover {
+        color: var(--c-green) !important;
+        background: #f0f4e0;
+    }
+
+    .overlay-menu ul ul li:last-child a {
+        border-bottom: none;
+    }
+
+    /* Hide the "+" treemenu toggle (replaced by arrow on parent) */
+    .overlay-menu .treeview-toggle {
+        display: none !important;
+    }
+
+    /* Arrow indicator on expandable parents */
+    .overlay-menu > ul > li > a::after {
+        content: '›';
+        font-size: 1.5rem;
+        color: #ccc;
+        font-weight: 300;
+        line-height: 1;
+        transition: transform 0.25s ease, color 0.2s;
+        display: inline-block;
+    }
+
+    /* If no sub-pages, no arrow */
+    .overlay-menu > ul > li:not(.has-children) > a::after {
+        content: '';
+    }
+
+    /* Arrow rotates when open */
+    .overlay-menu > ul > li > a.active::after,
+    .overlay-menu > ul > li.active > a::after {
+        transform: rotate(90deg);
+        color: var(--c-green);
+    }
+
+    /* --- DRAWER FOOTER (CTA) --- */
+    .mob-drawer-footer {
+        padding: 1.5rem;
+        border-top: 2px solid #f0f0f0;
+        background: #fafafa;
+        display: flex;
+        flex-direction: column;
+        gap: 0.875rem;
+        flex-shrink: 0;
+    }
+
+    .mob-drawer-footer a:first-child {
+        text-align: center;
+        color: #555 !important;
+        font-size: 1rem;
+        font-weight: 500;
+        text-decoration: none;
+        padding: 0.6rem;
+        border-radius: 8px;
+        background: white;
+        border: 1px solid #eee;
+        transition: color 0.2s;
+    }
+
+    .mob-drawer-footer a:first-child:hover {
+        color: var(--c-green) !important;
+    }
+
+    .mob-cta-btn {
+        display: block;
+        text-align: center;
+        background: var(--c-red) !important;
+        color: white !important;
+        padding: 0.875rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        text-decoration: none !important;
+        transition: background 0.2s, transform 0.2s;
+    }
+
+    .mob-cta-btn:hover {
+        background: #a01828 !important;
+        transform: scale(1.02);
+    }
+
+    /* --- HAMBURGER COLOR FIX (ensure visible on transparent header) --- */
+    .mobile-menu .button_container span {
+        background: #000000 !important;
+    }
+
+    .mobile-menu .button_container.active span {
+        background: #C31F34 !important;
+    }
+}
