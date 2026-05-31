@@ -1,0 +1,2422 @@
+/* --- VARIABLEN & BASIS --- */
+:root {
+    --c-black: #000000;
+    --c-green: #c4d04f;
+    --c-grey: #d5d5cb;
+    --c-red: #C31F34;
+    --c-black: #000000;
+    --c-white: #ffffff;
+    --shadow-soft: 0 10px 30px -10px rgba(0,0,0,0.1);
+    --shadow-hover: 0 20px 40px -10px rgba(196, 208, 79, 0.3);
+    --radius: 16px;
+    --font-main: "Roboto", sans-serif;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: #f9f9f9; /* Sehr helles Grau für Kontrast */
+    color: #333;
+}
+/* --- DROPDOWN NAVIGATION (Version 10) --- */
+/* Container für Dropdown */
+.navbar-section .dropdown-menu {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05) !important;
+    border-radius: 0 0 12px 12px !important;
+    padding: 10px 0 !important;
+    min-width: 220px;
+    margin-top: 10px !important; /* Abstand zum Header */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: block; /* Trick für Animation */
+    visibility: hidden;
+}
+
+/* Dropdown anzeigen bei Hover */
+.navbar-section .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* Links im Dropdown */
+.navbar-section .dropdown-menu .btn-link {
+    display: block;
+    padding: 12px 20px !important;
+    color: #444 !important;
+    font-weight: 400;
+    font-size: 0.95rem;
+    text-transform: none;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+    margin: 0 10px;
+    width: auto;
+}
+
+.navbar-section .dropdown-menu .btn-link:hover {
+    background: rgba(196, 208, 79, 0.15); /* Dein Grün, transparent */
+    color: #000 !important;
+    transform: translateX(5px); /* Kleiner Slide nach rechts */
+}
+
+/* Pfeilchen entfernen oder anpassen */
+.navbar-section .dropdown .dropdown-toggle {
+    padding-right: 1.5rem;
+}
+.navbar-section .dropdown .dropdown-toggle::after {
+    margin-left: 0.5rem;
+    color: var(--c-green);
+}
+
+/* --- FOOTER STYLING --- */
+#footer {
+    background: #222; /* Fast Schwarz für Kontrast */
+    color: #aaa;
+    padding: 3rem 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255,255,255,0.05);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+}
+
+.footer-nav a {
+    color: #333 !important;
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+    color: var(--c-green) !important;
+}
+
+.footer-nav .separator {
+    color: #555;
+}
+
+
+/* --- NAVIGATION (Glassmorphismus) --- */
+#header {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    height: auto;
+    padding: 0.5rem 0;
+}
+
+/* Menü-Links modernisieren */
+.navbar-section .btn-link {
+    color: var(--c-black) !important;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.navbar-section .btn-link:hover, 
+.navbar-section .btn-link.active {
+    color: var(--c-green) !important;
+}
+
+/* Unterstrich-Animation beim Hover */
+.navbar-section .btn-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--c-green);
+    transition: width 0.3s ease;
+}
+.navbar-section .btn-link:hover::after {
+    width: 100%;
+}
+
+/* Dropdowns schicker machen */
+.dropdown-menu {
+    border: none !important;
+    box-shadow: var(--shadow-soft) !important;
+    border-radius: 0 0 var(--radius) var(--radius) !important;
+    padding: 1rem 0 !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+}
+.dropdown-menu .btn-link {
+    text-transform: none !important;
+    padding: 0.5rem 1.5rem !important;
+}
+
+/* --- IMPRESSUM HERO (Der Wow-Effekt) --- */
+.imp-hero {
+    position: relative;
+    height: 50vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    margin-top: -4rem; /* Header-Höhe ausgleichen */
+    padding-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.imp-hero-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, var(--c-gray) 0%, #ffffff 100%);
+    z-index: 1;
+}
+
+/* Ein grüner Blob im Hintergrund für Tiefe */
+.imp-hero-bg::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: var(--c-green);
+    opacity: 0.15;
+    border-radius: 50%;
+    top: -20%;
+    right: -10%;
+    filter: blur(80px);
+    animation: floatBlob 10s infinite alternate ease-in-out;
+}
+
+.imp-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.imp-hero h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--c-black);
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+.imp-hero p {
+    font-size: 1.5rem;
+    color: #666;
+    font-weight: 300;
+}
+
+/* --- GRID & CARDS --- */
+.imp-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem 6rem 2rem;
+}
+
+.imp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+    margin-top: -80px; /* Überlappt den Hero leicht */
+    position: relative;
+    z-index: 10;
+}
+
+.imp-card {
+    background: var(--c-white);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(0,0,0,0.02);
+    position: relative;
+    overflow: hidden;
+}
+
+.imp-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Grüner Akzent-Rand oben bei der ersten Karte */
+.imp-card.highlight-border {
+    border-top: 4px solid var(--c-green);
+}
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    background: var(--c-gray);
+    color: var(--c-black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    transition: background 0.3s;
+}
+
+.imp-card:hover .icon-box {
+    background: var(--c-green);
+    color: var(--c-white);
+}
+
+.imp-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.imp-link {
+    color: var(--c-black);
+    text-decoration: none;
+    background-image: linear-gradient(var(--c-green), var(--c-green));
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+}
+
+.imp-link:hover {
+    background-size: 100% 2px;
+    color: #000;
+}
+
+.big-number {
+    font-family: monospace;
+    font-size: 1.1rem;
+    background: #f0f0f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* --- DETAILS SECTION --- */
+.imp-details-section {
+    background: var(--c-white);
+    padding: 3rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+}
+
+.imp-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.imp-col {
+    flex: 1;
+    min-width: 300px;
+}
+
+.imp-box {
+    background: #fafafa;
+    padding: 1.5rem;
+    border-left: 3px solid var(--c-red);
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.imp-divider {
+    margin: 3rem 0;
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
+}
+
+.legal-text-block {
+    margin-bottom: 2rem;
+}
+
+.legal-text-block h4 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--c-green);
+    margin-bottom: 0.5rem;
+}
+
+.legal-text-block p {
+    line-height: 1.7;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.source-note {
+    font-size: 0.8rem;
+    color: #999;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* --- ANIMATIONEN --- */
+@keyframes floatBlob {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-30px, 40px); }
+}
+
+.animate-pop-in {
+    animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    animation-delay: 0.2s;
+}
+
+@keyframes popIn {
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Anpassung */
+@media (max-width: 768px) {
+    .imp-hero h1 { font-size: 2.5rem; }
+    .imp-grid { margin-top: 0; }
+    .imp-details-section { padding: 1.5rem; }
+}
+/* --- KONTAKT SEITE VERSION 10 --- */
+
+/* Hero Bereich */
+.contact-hero {
+    text-align: center;
+    padding: 3rem 0 2rem;
+}
+.contact-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--c-black);
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+.contact-hero p {
+    font-size: 1.3rem;
+    color: #666;
+    font-weight: 300;
+}
+
+/* Haupt-Wrapper: Grid Layout */
+/* WICHTIG: Quark rendert den Content (Info) ZUERST, dann das Formular.
+   Wir nutzen CSS Grid, um sie nebeneinander zu legen. */
+.modular-row.contact, /* Falls Modular */
+body.contact .columns { /* Standard Quark Grid */
+    display: block !important; /* Reset Quark defaults */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Wir nehmen an, dass Grav Content und Formular in einem Container ausgibt.
+   Da Quark hier tricky ist, stylen wir den Wrapper, den wir im HTML erstellt haben (.contact-wrapper)
+   und das Formular, das DANACH kommt. */
+
+/* Layout Container erzwingen */
+#body-wrapper .container {
+    max-width: 1200px !important;
+}
+
+/* Grid Setup für Desktop */
+@media (min-width: 960px) {
+    /* Wir müssen tricksen, da Grav Formular und Content oft trennt.
+       Wir machen den Content-Wrapper (.contact-wrapper) zum Grid-Container,
+       aber das Formular liegt oft außerhalb.
+       
+       Lösung: Wir stylen Info und Formular so, dass sie floaten oder flexen, 
+       wenn sie im selben Container liegen.
+    */
+    
+    /* Falls Content und Formular Geschwister sind */
+    .contact-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 50/50 Split */
+        gap: 4rem;
+        align-items: start;
+    }
+}
+
+/* --- LINKE SPALTE: INFO CARDS --- */
+.info-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(196, 208, 79, 0.2);
+    border-color: var(--c-green);
+}
+
+.icon-circle {
+    width: 50px;
+    height: 50px;
+    background: var(--c-gray);
+    color: var(--c-black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.info-card.highlight .icon-circle {
+    background: var(--c-green);
+    color: white;
+}
+
+.info-card h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #999;
+    letter-spacing: 1px;
+}
+
+.info-card p {
+    margin: 0.2rem 0 0 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--c-black);
+    line-height: 1.3;
+}
+
+.clean-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s;
+}
+.clean-link:hover {
+    color: var(--c-red);
+}
+
+/* --- KARTE (MAP) --- */
+.map-container {
+    height: 350px;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+    border: 4px solid white;
+}
+
+/* --- RECHTE SPALTE: FORMULAR STYLING --- */
+/* Wir machen das Formular super sexy */
+
+/* --- KONTAKT SEITE FIX --- */
+
+/* 1. Hero Styling */
+.contact-hero {
+    text-align: center;
+    padding: 2rem 0 4rem;
+    grid-column: 1 / -1; /* Über volle Breite im Grid */
+}
+.contact-hero h1 { font-size: 3rem; color: #000; margin-bottom: 0.5rem; }
+.contact-hero p { font-size: 1.2rem; color: #666; }
+
+/* 2. DAS LAYOUT (Split Screen) */
+/* Wir suchen den Container, der .contact-left-content UND form enthält */
+/* In Quark ist das meistens .columns > .column */
+
+@media (min-width: 960px) {
+    /* Wir zwingen den Haupt-Content-Bereich in ein Grid */
+    #body-wrapper .container .columns .column.col-12 {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr; /* 50% links, 50% rechts */
+        gap: 4rem;
+        align-items: start;
+    }
+
+    /* Der Hero soll oben über beide Spalten gehen */
+    .contact-hero {
+        grid-column: 1 / span 2;
+    }
+
+    /* Linke Seite (Info & Map) */
+    .contact-left-content {
+        grid-column: 1;
+    }
+
+    /* Rechte Seite (Formular) */
+    form[name="kontakt"] {
+        grid-column: 2;
+        margin-top: 0 !important;
+    }
+}
+
+/* 3. Styling der Info-Karten */
+.info-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.info-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid #eee;
+}
+
+.icon-circle {
+    width: 40px; height: 40px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+}
+.info-card.highlight .icon-circle {
+    background: #c4d04f; color: white;
+}
+
+.info-card h3 { margin: 0; font-size: 0.8rem; text-transform: uppercase; color: #999; }
+.info-card p { margin: 0; font-weight: bold; color: #333; }
+.clean-link { text-decoration: none; color: inherit; }
+
+/* 4. Formular Styling (Sexy Look) */
+form[name="kontakt"] {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    border-top: 5px solid #c4d04f; /* Grüner Akzent oben */
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    background: #fafafa;
+}
+input:focus, textarea:focus {
+    border-color: #c4d04f;
+    outline: none;
+    background: white;
+}
+
+button[type="submit"] {
+    background: #C31F34 !important;
+    color: white !important;
+    width: 100%;
+    padding: 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+button[type="submit"]:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(195, 31, 52, 0.3);
+}
+
+/* Mobile Fallback */
+@media (max-width: 959px) {
+    #body-wrapper .container .columns .column.col-12 {
+        display: block !important;
+    }
+    .contact-left-content { margin-bottom: 3rem; }
+}
+/* --- FORMULAR BUTTONS (Kontakt & Termin) --- */
+
+/* Wir sprechen Kontakt UND Termin Formulare gleichzeitig an */
+/* Zusätzlich ein Fallback (.button-wrapper button), falls das Formular einen anderen Namen hat */
+form[name="kontakt"] button[type="submit"],
+form[name="termin"] button[type="submit"],
+form[name="terminvereinbarung"] button[type="submit"],
+.button-wrapper button.button-block {
+    
+    /* 1. Breite auf 1/3 (33%) begrenzen */
+    width: 33% !important; 
+    min-width: 200px; /* Damit er nicht zu winzig wird auf kleinen Tablets */
+    
+    /* 2. Text absolut mittig zentrieren (Flexbox Magie) */
+    display: inline-flex !important;
+    justify-content: center; /* Horizontal mittig */
+    align-items: center;     /* Vertikal mittig */
+    
+    /* 3. Abstände korrigieren */
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    line-height: 1.2 !important; 
+    height: auto !important;
+    
+    /* Optional: Button zentrieren (margin: 0 auto) falls gewünscht */
+}
+
+/* Mobile Anpassung: Auf dem Handy wieder volle Breite */
+@media (max-width: 768px) {
+    form[name="kontakt"] button[type="submit"],
+    form[name="termin"] button[type="submit"],
+    form[name="terminvereinbarung"] button[type="submit"],
+    .button-wrapper button.button-block {
+        width: 100% !important;
+    }
+}
+
+/* --- GLOBAL VARIABLES & ANIMATIONS --- */
+:root {
+    --c-green: #c4d04f;
+    --c-gray: #d5d5cb;
+    --c-red: #C31F34;
+    --c-black: #000000;
+    --glass: rgba(255, 255, 255, 0.9);
+    --glass-blur: blur(10px);
+    --shadow-xl: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+/* Smooth Scroll */
+html { scroll-behavior: smooth; }
+
+/* Animations Classes */
+.fade-up { animation: fadeUp 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; opacity: 0; transform: translateY(40px); }
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+/* Button Styles (Version 10) */
+.btn-v10 {
+    display: inline-block;
+    padding: 12px 30px;
+    background: var(--c-red);
+    color: white !important;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(195, 31, 52, 0.3);
+    border: 2px solid var(--c-red);
+}
+.btn-v10:hover {
+    background: transparent;
+    color: var(--c-red) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(195, 31, 52, 0.4);
+}
+.btn-v10.green {
+    background: var(--c-green);
+    border-color: var(--c-green);
+    box-shadow: 0 10px 20px rgba(196, 208, 79, 0.3);
+}
+.btn-v10.green:hover {
+    color: var(--c-green) !important;
+    background: transparent;
+}
+
+/* --- HERO SLIDER --- */
+.hero-slider-container {
+    position: relative;
+    height: 90vh; /* Fast Fullscreen */
+    min-height: 600px;
+    overflow: hidden;
+    background: #000;
+}
+.hero-slide {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-slide.active { opacity: 1; z-index: 2; }
+.hero-overlay {
+    background: rgba(0,0,0,0.4); /* Darken images */
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+}
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 2rem;
+}
+.hero-logo {
+    max-width: 300px;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+}
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    line-height: 1.1;
+	color: var(--c-green); 
+}
+.slider-nav {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+}
+.slider-dot {
+    width: 12px; height: 12px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.slider-dot.active { background: var(--c-green); transform: scale(1.3); }
+
+/* --- INHABERIN SECTION (Final Fix v2) --- */
+.owner-section {
+    padding: 6rem 0;
+    background: white;
+    position: relative;
+    overflow: hidden;
+}
+.owner-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+.owner-img-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Container darf nicht breiter als das Bild sein */
+    width: 100%; 
+}
+
+/* ULTIMATIVER FIX - OHNE ID-ABHÄNGIGKEIT */
+/* Wir nutzen "html body", das greift immer */
+html body .owner-img-wrapper img {
+    border-radius: 20px;
+    box-shadow: var(--shadow-xl);
+    
+    /* 1. Reset aller Größenangaben */
+    width: auto !important;
+    height: auto !important;
+    min-width: 0 !important;
+    
+    /* 2. Harte Grenzen setzen (500px) */
+    max-width: 500px !important; 
+    max-height: 500px !important;
+    
+    /* 3. Darstellung */
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    transition: transform 0.5s;
+}
+
+.owner-img-wrapper:hover img { transform: scale(1.02); }
+
+/* Mobile Anpassung */
+@media (max-width: 840px) {
+    .owner-grid { grid-template-columns: 1fr; }
+    html body .owner-img-wrapper img { 
+        max-width: 100% !important; /* Auf Handy volle Breite erlauben */
+        max-height: 350px !important; 
+    }
+}
+
+
+
+/* Dekorativer Blob hinter dem Bild */
+.owner-img-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 80%; height: 80%; /* Kleinerer Blob, damit er hinter dem kleineren Bild passt */
+    background: var(--c-gray);
+    opacity: 0.3;
+    z-index: -1;
+    top: 10%; left: 10%;
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    animation: blobFloat 10s infinite alternate;
+}
+@keyframes blobFloat { from { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; } to { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; } }
+
+/* --- LEISTUNGEN SECTION --- */
+.services-section {
+    background: #f8f9fa;
+    padding: 6rem 0;
+    text-align: center;
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+.service-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s;
+    border-bottom: 4px solid transparent;
+}
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+    border-bottom-color: var(--c-green);
+}
+.service-card h4 { color: var(--c-black); font-weight: 700; margin: 0; }
+
+/* --- GALERIE & QUICK NAV --- */
+/* --- GLIGHTBOX GALERIE (Version 10) --- */
+.gallery-section {
+    padding: 4rem 0;
+    background: #fff;
+}
+
+.gallery-masonry {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Das Item ist jetzt ein Link (a-Tag) */
+.gallery-item {
+    display: block;
+    position: relative;
+    height: 300px; /* Einheitliche Höhe für sauberes Raster */
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Füllt die Box perfekt aus */
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hover Effekte */
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    z-index: 2;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1); /* Sanfter Zoom */
+}
+
+/* Overlay mit Icon beim Hover */
+.gallery-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-overlay::before {
+    content: '+'; /* Simples Plus-Icon */
+    color: white;
+    font-size: 3rem;
+    font-weight: 300;
+    transform: scale(0.8);
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+.gallery-item:hover .gallery-overlay::before {
+    transform: scale(1);
+}
+
+.quick-nav {
+    background: var(--c-black);
+    padding: 3rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.quick-nav a {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 5px;
+}
+.quick-nav a::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--c-green); transition: width 0.3s;
+}
+.quick-nav a:hover::after { width: 100%; }
+
+/* --- KUNDENSTIMMEN --- */
+.testimonials-section {
+    padding: 6rem 0;
+    background: white;
+}
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+.testimonial-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+.testimonial-card::before {
+    content: '“';
+    font-size: 5rem;
+    color: var(--c-green);
+    opacity: 0.2;
+    position: absolute;
+    top: 10px; left: 20px;
+    font-family: serif;
+}
+.testimonial-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.testimonial-avatar {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--c-green);
+}
+.testimonial-text { font-style: italic; color: #555; line-height: 1.6; }
+
+/* --- KONTAKT CTA (Startseite & Kontaktseite) --- */
+.cta-section {
+    position: relative;
+    height: 600px;
+    background-size: cover;
+    /* Bildposition: 20% von links. Das schiebt das Bild etwas nach rechts, 
+       damit die Person links (Mireia) nicht abgeschnitten wird. */
+    background-position: 20% center !important; 
+    background-attachment: fixed; /* Parallax Effekt */
+    
+    display: flex;
+    align-items: center;
+    /* WICHTIG: Box nach RECHTS schieben */
+    justify-content: flex-end !important; 
+    
+    /* Abstand vom rechten Rand */
+    padding-right: 10%;
+}
+
+/* Mobile Anpassung für Kontakt */
+@media (max-width: 840px) {
+    .cta-section {
+        justify-content: center !important; /* Auf Handy wieder mittig */
+        padding-right: 0;
+        background-position: center center !important;
+    }
+}
+
+.cta-overlay {
+    background: rgba(0,0,0,0.4); /* Etwas heller als vorher, damit man das Foto sieht */
+    position: absolute; top:0; left:0; right:0; bottom:0;
+}
+
+.cta-box {
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.15); /* Milchglas */
+    backdrop-filter: blur(15px);
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    max-width: 500px; /* Etwas schmaler, damit sie nicht das Gesicht verdeckt */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+
+.cta-box h2 { color: white; font-size: 2.5rem; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+.cta-contact-details { margin-top: 2rem; font-size: 1.1rem; }
+.cta-contact-details p { margin: 0.5rem 0; }
+
+
+/* Mobile Fixes */
+@media (max-width: 768px) {
+    .owner-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2rem; }
+    .cta-section { background-attachment: scroll; }
+}
+/* Zwingt die Hero-Titel auf Grün */
+#heroSlider .hero-content h2.hero-title {
+    color: #c4d04f !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8) !important; /* Etwas mehr Schatten für Lesbarkeit auf Bildern */
+}
+/* Zwingt den Hero-Container, KEIN Hintergrundbild zu haben */
+section.modular-hero.hero {
+    background-image: none !important;
+    background-color: #fff; /* Weißer Hintergrund als Basis */
+}
+/* --- NAVIGATION FIX --- */
+#header {
+    position: fixed !important; /* Fixiert die Leiste am oberen Bildschirmrand */
+    top: 0;
+    width: 100%;
+    z-index: 10000 !important; /* Zwingt sie über ALLE anderen Elemente */
+}
+
+/* Sicherstellen, dass der Slider darunter bleibt */
+.hero-slider-container {
+    position: relative;
+    z-index: 1; /* Niedriger als der Header */
+}
+
+/* Falls der Inhalt jetzt unter die Navi rutscht, geben wir dem Body etwas Luft oben */
+/* (Nur nötig, falls die erste Zeile vom Slider abgeschnitten wirkt) */
+#body-wrapper {
+    padding-top: 0 !important; /* Quark macht das meist automatisch, hier zur Sicherheit Reset */
+}
+
+/* --- HEADER & NAVIGATION FINAL FIX (Version 11) --- */
+
+/* 1. BASIS (Gilt für alle) */
+#header {
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+    z-index: 10000 !important;
+    transition: all 0.3s ease;
+}
+
+/* Container für Logo und Menü flexibel machen */
+.navbar-section {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Logo-Link Container entfesseln */
+.navbar-section .logo,
+.navbar-section .navbar-brand {
+    height: auto !important;
+    display: flex;
+    align-items: center;
+}
+
+/* -------------------------------------------------- */
+/* 2. MOBILE VERSION (Handy & kleine Tablets bis 840px) */
+/* -------------------------------------------------- */
+@media (max-width: 840px) {
+    #header {
+        height: 70px !important; /* Kompakte Höhe */
+        background: #ffffff !important; /* Immer Weiß */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Logo klein halten */
+    .navbar-section .logo img,
+    .navbar-section .navbar-brand img {
+        height: 45px !important;
+        width: auto !important;
+        margin-left: 10px;
+    }
+
+    /* HAMBURGER MENÜ SICHTBAR MACHEN */
+    /* Wir zwingen das Icon, sichtbar, schwarz und rechts zu sein */
+    .header-mobile-menu,
+    .mobile-menu-button,
+    #mobile-toggle {
+        display: block !important;
+        position: absolute;
+        right: 20px;
+        top: 22px; /* Vertikal zentriert bei 70px Höhe */
+        color: #000000 !important; /* SCHWARZ! */
+        font-size: 1.8rem;
+        z-index: 10001;
+        cursor: pointer;
+    }
+    
+    /* Desktop Menü ausblenden */
+    .drop-down { display: none !important; }
+}
+
+/* -------------------------------------------------- */
+/* 3. DESKTOP VERSION (Ab 841px) */
+/* -------------------------------------------------- */
+@media (min-width: 841px) {
+    #header {
+        height: 100px !important; /* Kleiner als vorher (war 140px) */
+        background: transparent !important; /* Transparent über dem Slider */
+        box-shadow: none;
+        padding-top: 10px;
+    }
+
+    /* Logo groß, aber nicht riesig */
+    .navbar-section .logo img,
+    .navbar-section .navbar-brand img {
+        height: 80px !important; /* Angenehme Größe */
+        width: auto !important;
+    }
+
+    /* Hamburger verstecken */
+    .header-mobile-menu { display: none !important; }
+}
+
+/* -------------------------------------------------- */
+/* 4. SCROLL EFFEKT (Nur Desktop) */
+/* -------------------------------------------------- */
+@media (min-width: 841px) {
+    #header.scrolled {
+        height: 70px !important; /* Schrumpft zusammen */
+        background: rgba(255, 255, 255, 0.98) !important; /* Wird weiß */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        padding-top: 0;
+    }
+
+    #header.scrolled .logo img,
+    #header.scrolled .navbar-brand img {
+        height: 50px !important; /* Logo schrumpft mit */
+    }
+}
+/* --- KONTAKT SEKTION FIX (Mireia sichtbar machen) --- */
+
+/* 1. Den Container (Hintergrundbild) vorbereiten */
+/* Wir suchen den Bereich, der das Bild enthält. Meistens .modular-row */
+.modular-row.callout, 
+.modular-row.text {
+    background-position: 20% center !important; /* Schiebt das Bild etwas nach rechts, damit Mireia links sicher sichtbar ist */
+    display: flex !important;
+    align-items: center !important; /* Vertikal mittig */
+    min-height: 500px;
+    padding: 2rem;
+}
+
+/* 2. Die Milchglas-Box nach RECHTS schieben */
+.milky-box-right {
+    background: rgba(255, 255, 255, 0.8); /* Weiß, 80% deckend */
+    backdrop-filter: blur(8px); /* Der "Milchglas"-Weichzeichner */
+    padding: 3rem;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+    /* DER TRICK ZUM RECHTSBÜNDIG MACHEN: */
+    margin-left: auto !important;  /* Drückt die Box von links weg nach rechts */
+    margin-right: 5% !important;   /* Kleiner Abstand zum rechten Rand */
+}
+
+.milky-box-right h2 {
+    color: #C31F34; /* Rot */
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.milky-box-right p {
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* 3. Mobile Anpassung (Auf Handy wieder mittig) */
+@media (max-width: 840px) {
+    .modular-row.callout, 
+    .modular-row.text {
+        background-position: center center !important;
+        justify-content: center;
+    }
+    
+    .milky-box-right {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        background: rgba(255, 255, 255, 0.95); /* Fast deckend für Lesbarkeit */
+    }
+}
+
+/* Optional: Hintergrundbild-Position optimieren */
+/* Falls Mireia immer noch verdeckt ist, schieben wir das Bild etwas nach links */
+.cta-section > div:first-child {
+    background-position: 20% center !important; /* Fokus mehr auf den linken Bildbereich */
+}
+/* --- ICON NAVIGATION (Version 10) --- */
+
+.icon-nav-container {
+    display: flex;
+    justify-content: center;
+    gap: 3rem; /* Abstand zwischen den Icons */
+    flex-wrap: wrap;
+    margin-top: 60px; /* Mindestens 50px Abstand zur Galerie */
+    padding-top: 2rem;
+    border-top: 1px solid #f0f0f0; /* Optional: Feine Trennlinie */
+}
+
+.icon-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none !important;
+    group: hover; /* Für Transition */
+    transition: transform 0.3s ease;
+}
+
+/* Das SVG Icon */
+.nav-icon {
+    width: 100px;
+    height: 100px;
+    color: #d5d5cb; /* Standard Grau */
+    transition: color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+/* Der Text darunter */
+.nav-label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #d5d5cb; /* Standard Grau */
+    transition: color 0.3s ease;
+}
+
+/* HOVER EFFEKTE (Corporate Identity Rot) */
+.icon-nav-item:hover {
+    transform: translateY(-5px); /* Leichtes Schweben */
+}
+
+.icon-nav-item:hover .nav-icon {
+    color: #C31F34; /* Rot */
+    transform: scale(1.1); /* Icon wird etwas größer */
+}
+
+.icon-nav-item:hover .nav-label {
+    color: #C31F34; /* Rot */
+}
+
+/* Mobile Anpassung: Icons etwas kleiner, damit sie nebeneinander passen */
+@media (max-width: 600px) {
+    .icon-nav-container { gap: 1.5rem; }
+    .nav-icon { width: 60px; height: 60px; }
+    .nav-label { font-size: 0.9rem; }
+}
+/* --- FOOTER LINKS (Impressum & Datenschutz) --- */
+
+/* Standardzustand: Schwarz */
+#footer a {
+    color: #000000 !important;
+    text-decoration: none; /* Optional: Unterstreichung entfernen für cleanen Look */
+    transition: color 0.3s ease;
+}
+
+/* Mouse-Over Zustand: Grün */
+#footer a:hover {
+    color: #c4d04f !important;
+}
+/* --- HAMBURGER MENÜ SICHTBAR MACHEN (Version 12) --- */
+
+/* 1. Den Container für das Menü auf dem Handy erzwingen */
+@media (max-width: 840px) {
+    .mobile-menu {
+        display: block !important;
+        position: absolute;
+        right: 20px;
+        top: 25px; /* Ausrichten in der 70px Leiste */
+        z-index: 10005;
+    }
+
+    /* 2. Die drei Striche (Hamburger) SCHWARZ färben */
+    #toggle .top,
+    #toggle .middle,
+    #toggle .bottom {
+        background-color: #000000 !important; /* WICHTIG: Schwarz statt Weiß */
+        height: 3px !important; /* Etwas dicker machen */
+        width: 30px !important; /* Etwas breiter */
+    }
+    
+    /* Optional: Wenn das Menü offen ist, sollen sie rot werden (X) */
+    #toggle.active .top,
+    #toggle.active .middle,
+    #toggle.active .bottom {
+        background-color: #C31F34 !important;
+    }
+}
+
+/* Auf Desktop sicherstellen, dass es weg ist */
+@media (min-width: 841px) {
+    .mobile-menu {
+        display: none !important;
+    }
+}
+/* --- 2-KLICK KARTE (Datenschutz) --- */
+.map-wrapper {
+    width: 100%;
+    height: 400px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-placeholder {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.map-content h3 { margin-bottom: 10px; color: #333; }
+.map-content p { font-size: 0.9rem; color: #666; margin-bottom: 20px; }
+
+/* Button Styling (falls btn-v10 noch nicht definiert ist) */
+.btn-v10.green {
+    background-color: #c4d04f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+.btn-v10.green:hover {
+    background-color: #aeb944;
+}
+/* --- CHECKLISTE DESIGN (Version 10) --- */
+
+/* 1. Hero Section mit Margin-Fix */
+.checklist-hero {
+    position: relative;
+    height: 400px;
+    background: url('/user/pages/01.home/01._hero/header.jpg') center/cover no-repeat;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 3rem;
+    
+    /* WICHTIG: Abstand für die Navigation */
+    margin-top: 70px !important; 
+}
+
+@media (min-width: 841px) {
+    .checklist-hero {
+        margin-top: 100px !important;
+    }
+}
+
+.checklist-hero .hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(196, 208, 79, 0.8), rgba(195, 31, 52, 0.6));
+}
+
+.checklist-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+}
+
+.hero-logo {
+    height: 100px;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+}
+
+.checklist-hero h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* 2. Container & Intro */
+.checklist-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.info-box {
+    background: #f9f9f9;
+    border-left: 5px solid #c4d04f;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.info-box i { font-size: 2rem; color: #c4d04f; }
+
+/* 3. Formular Styling */
+.checklist-form fieldset {
+    border: none;
+    padding: 0;
+    margin-bottom: 3rem;
+}
+
+.checklist-form h3 {
+    border-bottom: 2px solid #d5d5cb;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    color: #C31F34;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+/* Inputs */
+.checklist-form input[type="text"],
+.checklist-form input[type="email"],
+.checklist-form textarea,
+.checklist-form select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    background: #fff;
+    margin-bottom: 1rem;
+}
+
+.checklist-form input:focus,
+.checklist-form textarea:focus {
+    border-color: #c4d04f;
+    box-shadow: 0 0 0 4px rgba(196, 208, 79, 0.2);
+    outline: none;
+}
+
+.checklist-form label {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: #333;
+}
+
+/* Checkbox & Radio Grids */
+.checkbox-grid-2, .radio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 600px) {
+    .checkbox-grid-2, .radio-grid { grid-template-columns: 1fr; }
+}
+
+/* Custom Checkboxes */
+.checklist-form input[type="checkbox"],
+.checklist-form input[type="radio"] {
+    accent-color: #C31F34;
+    transform: scale(1.2);
+    margin-right: 10px;
+}
+
+/* Submit Button */
+.btn-v10.red {
+    background: #C31F34;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 1px;
+    display: block;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.btn-v10.red:hover {
+    background: #a0182a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(195, 31, 52, 0.3);
+}
+
+/* 4. Galerie Platzhalter */
+.checklist-gallery {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.gallery-placeholder {
+    height: 150px;
+    background: #d5d5cb;
+    border-radius: 10px;
+    position: relative;
+}
+.gallery-placeholder::after {
+    content: 'FOTO';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-weight: bold;
+}
+/* --- CHECKLISTE FINAL (Version 17 - Styling & Breite) --- */
+
+/* 1. ÜBERSCHRIFTEN (Fett & Groß) */
+/* Das Label über der Gruppe (z.B. "Allgemeine Beschwerden") */
+.checklist-form .form-label {
+    font-weight: 700 !important; /* Fett */
+    font-size: 1.1rem !important;
+    margin-bottom: 10px;
+    color: #333;
+    display: block;
+}
+
+/* 2. AUSWAHLTEXTE (Wie Fließtext: Nicht fett, normale Größe) */
+/* Die Labels neben den Checkboxen/Radio-Buttons */
+.checklist-form input[type="checkbox"] + label,
+.checklist-form input[type="radio"] + label {
+    font-weight: 400 !important; /* Nicht fett */
+    font-size: 1rem !important;   /* Standardgröße */
+    line-height: 1.6;             /* Standard Zeilenabstand */
+    color: #4d5055;               /* Standard Textfarbe */
+    display: inline-block;
+    margin-left: 8px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+/* Der Hinweis "(Mehrfachauswahl...)" */
+.hint-text {
+    font-size: 0.85em;
+    color: #888;
+    margin-left: 5px;
+    font-style: italic;
+    font-weight: normal;
+}
+
+/* 3. SPALTEN-LAYOUT (Desktop) */
+/* Sorgt dafür, dass Bereiche nebeneinander stehen */
+@media (min-width: 841px) {
+    .checklist-form .form-columns {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 40px; /* Abstand zwischen den Spalten */
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    .checklist-form .form-column {
+        flex: 1; /* Gleich breit */
+        min-width: 0;
+    }
+}
+
+/* 4. SPEZIAL-KLASSEN (Breite & Button) */
+@media (min-width: 841px) {
+    /* Eingabefeld auf 1/3 Breite begrenzen */
+    .checklist-form .width-one-third {
+        width: 33.33% !important;
+        min-width: 250px; /* Damit es nicht zu klein wird */
+    }
+
+    /* Button: 1/3 Breite, Zentriert, Text mittig */
+    .checklist-form .btn-centered-third {
+        width: 33.33% !important;
+        min-width: 250px;
+        
+        /* Flexbox sorgt dafür, dass der Text EXAKT in der Mitte ist */
+        display: flex !important;
+        align-items: center !important;     /* Vertikal mittig */
+        justify-content: center !important; /* Horizontal mittig */
+        
+        /* Außenabstände: Oben 2rem, Unten 4rem (Platz zur Galerie), Rechts/Links auto (Zentriert) */
+        margin: 2rem auto 4rem auto !important;
+        
+        /* Innenabstand */
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+        
+        /* Zeilenhöhe normalisieren */
+        line-height: 1.2 !important;
+        height: auto !important;
+    }
+}
+
+/* Mobile Anpassung (Alles untereinander und volle Breite) */
+@media (max-width: 840px) {
+    .checklist-form .form-columns { display: block; }
+    .checklist-form .form-column { margin-bottom: 30px; }
+    .checklist-form .width-one-third { width: 100% !important; }
+    .checklist-form .btn-centered-third { 
+        width: 100% !important; 
+        margin-bottom: 3rem !important;
+    }
+}
+/* =========================================
+   SYMPTOME PAGE STYLING (Badass Version 2.0)
+   ========================================= */
+
+/* 1. HERO SECTION */
+.symptom-hero {
+    position: relative;
+    height: 350px;
+    background: url('/user/pages/01.home/01._hero/header.jpg') center/cover no-repeat;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 70px !important;
+    margin-bottom: 3rem;
+}
+@media (min-width: 841px) { .symptom-hero { margin-top: 100px !important; } }
+
+.symptom-hero .hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(0,0,0, 0.8), rgba(50, 50, 50, 0.6)); /* Etwas dunkler für Kontrast */
+}
+
+.symptom-hero .hero-content { position: relative; z-index: 2; color: #fff; }
+
+/* HIER IST DIE ÄNDERUNG: TITEL IN ROT */
+.symptom-hero h1 { 
+    font-size: 3rem; 
+    font-weight: 900; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    margin: 0; 
+    color: #C31F34 !important; /* Chiasma Rot */
+    text-shadow: 0 5px 15px rgba(0,0,0,0.8); /* Starker Schatten für Lesbarkeit */
+}
+.symptom-hero p { font-size: 1.2rem; font-weight: 300; opacity: 0.9; margin-top: 10px; }
+
+
+/* 2. CONTAINER & TITEL */
+.symptom-container { max-width: 1100px; margin: 0 auto; padding: 0 20px 4rem 20px; }
+
+.section-title { text-align: center; margin-bottom: 2rem; }
+.section-title h2 { font-size: 2rem; color: #333; margin-bottom: 0.5rem; font-weight: 700; }
+.section-title p { color: #666; font-style: italic; }
+
+
+/* 3. VISUAL GALLERY (Static Cards) */
+.visual-gallery-wrapper {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 20px;
+    margin-bottom: 3rem; /* Etwas weniger Abstand zum CTA */
+    -webkit-overflow-scrolling: touch;
+}
+.visual-gallery-wrapper::-webkit-scrollbar { height: 6px; }
+.visual-gallery-wrapper::-webkit-scrollbar-thumb { background: #d5d5cb; border-radius: 3px; }
+
+.visual-card {
+    flex: 0 0 280px;
+    height: 350px;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    scroll-snap-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default; /* Kein Hand-Cursor mehr, da kein Link */
+}
+
+.visual-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.card-image {
+    width: 100%;
+    height: 80%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+
+.visual-card:hover .card-image { transform: scale(1.1); }
+
+.card-label {
+    height: 20%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-top: 4px solid #c4d04f;
+    position: relative;
+    z-index: 2;
+}
+
+@media (min-width: 1000px) {
+    .visual-gallery-wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        overflow: visible;
+    }
+    .visual-card { flex: auto; height: 300px; }
+}
+
+
+/* 4. SYMPTOME CTA (Ganz unten, zentriert) */
+/* Neuer Klassenname, damit es nicht mit der Startseite kollidiert */
+.symptom-cta { 
+    text-align: center; 
+    margin-top: 40px !important;
+    margin-bottom: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 10px;
+    max-width: 800px;
+}
+
+.symptom-cta h3 { 
+    font-size: 1.5rem; 
+    font-weight: 700; 
+    margin-bottom: 1.5rem; 
+    color: #333;
+}
+
+/* Button Styling (falls noch nicht global definiert) */
+.btn-v10.green {
+    background-color: #c4d04f;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s, transform 0.2s;
+}
+.btn-v10.green:hover {
+    background-color: #aeb944;
+    transform: translateY(-3px);
+}
+
+
+/* 5. SYMPTOM BLÖCKE */
+.symptom-block { 
+    margin-bottom: 4rem; /* Großer Abstand zwischen den Listen */
+}
+
+/* WICHTIG: Der letzte Block vor dem Button bekommt weniger Abstand */
+.symptom-block:last-of-type {
+    margin-bottom: 1.5rem; /* Reduziert von 4rem auf 1.5rem */
+}
+
+.block-header { margin-bottom: 1.5rem; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+.block-header h3 { display: inline-block; margin: 0; font-size: 1.5rem; font-weight: 700; }
+.block-header span { display: block; color: #888; font-size: 0.9rem; margin-top: 5px; }
+.block-header i { margin-right: 10px; font-size: 1.5rem; }
+
+.block-header.green h3, .block-header.green i { color: #c4d04f; }
+.block-header.red h3, .block-header.red i { color: #C31F34; }
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.symptom-item {
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-left: 5px solid #c4d04f;
+    font-weight: 500;
+    color: #444;
+    transition: all 0.2s ease;
+}
+
+.symptom-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background: #fafafa;
+}
+
+.symptom-item.red-border { border-left-color: #C31F34; }
+
+
+/* Animation Classes */
+.fade-up { animation: fadeUp 0.8s ease forwards; opacity: 0; transform: translateY(20px); }
+.delay-200 { animation-delay: 0.2s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-800 { animation-delay: 0.8s; }
+
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+/* =========================================
+   ÜBER MICH PAGE - SPLIT HERO DESIGN
+   ========================================= */
+
+/* 1. DER SPLIT HERO CONTAINER */
+.page-ueber-mich .split-hero-wrapper {
+    background: linear-gradient(135deg, #f0f0f0 0%, #d5d5cb 100%); /* Verlauf Grau */
+    padding: 4rem 0 0 0; /* Oben Platz, unten bündig */
+    margin-top: -2rem; /* Zieht es unter den Header */
+    margin-bottom: 3rem;
+    border-bottom: 5px solid #c4d04f; /* Grüner Abschluss unten */
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: hidden;
+}
+
+/* 2. DAS BILD (Links) */
+.page-ueber-mich .hero-image-col {
+    text-align: center;
+    display: flex;
+    align-items: flex-end; /* Bild steht unten auf der Linie */
+    justify-content: center;
+}
+
+.page-ueber-mich .hero-portrait {
+    max-height: 500px; /* Begrenzt die Höhe damit es nicht riesig wird */
+    width: auto;
+    max-width: 100%;
+    border-radius: 10px 10px 0 0; /* Oben rund, unten eckig */
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.15); /* Schatten nach oben */
+    margin-bottom: -5px; /* Fix für Lücke unten */
+}
+
+/* 3. DER TEXT (Rechts) */
+.page-ueber-mich .hero-text-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 4rem;
+    padding-left: 2rem;
+}
+
+.page-ueber-mich .hero-text-col h1 {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    color: #000;
+    margin-bottom: 1rem;
+}
+
+.page-ueber-mich .hero-text-col h2 {
+    font-weight: 300;
+    font-size: 1.8rem;
+    color: #C31F34; /* Rot */
+    margin-bottom: 1.5rem;
+}
+
+.page-ueber-mich .hero-line {
+    width: 80px;
+    height: 5px;
+    background: #c4d04f; /* Grün */
+}
+
+/* 4. LAYOUT HELFER */
+.page-ueber-mich .content-wrapper { padding: 0 1rem; }
+.page-ueber-mich .divider {
+    height: 1px; background: #d5d5cb; margin: 4rem 0; width: 100%; opacity: 0.5;
+}
+
+/* 5. LINKEDIN */
+.page-ueber-mich .linkedin-wrapper {
+    display: flex; align-items: center; justify-content: center; margin-top: 1rem;
+}
+.page-ueber-mich .linkedin-card {
+    border: 2px solid #d5d5cb; padding: 2rem; border-radius: 10px;
+    background: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    text-align: center; width: 100%; max-width: 300px;
+}
+.page-ueber-mich .linkedin-card:hover {
+    border-color: #0077b5; transform: translateY(-5px); transition: 0.3s;
+}
+.page-ueber-mich .linkedin-icon { width: 60px; margin-bottom: 1rem; }
+.page-ueber-mich .linkedin-card a { text-decoration: none; color: #000; }
+
+/* 6. WERDEGANG / TIMELINE */
+.page-ueber-mich .timeline-header {
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;
+    border-bottom: 3px solid; display: inline-block; padding-bottom: 5px; font-weight: 700;
+}
+.page-ueber-mich .timeline-header.green { border-color: #c4d04f; color: #000; }
+.page-ueber-mich .timeline-header.red { border-color: #C31F34; color: #000; }
+
+.page-ueber-mich ul.timeline-list {
+    list-style: none !important; margin: 0 !important; padding: 0 !important;
+}
+.page-ueber-mich ul.timeline-list li {
+    position: relative; padding-left: 25px; margin-bottom: 20px;
+    border-left: 2px solid #d5d5cb; list-style-type: none !important;
+}
+.page-ueber-mich ul.timeline-list.border-green li { border-left-color: #c4d04f; }
+.page-ueber-mich ul.timeline-list.border-red li { border-left-color: #C31F34; }
+
+.page-ueber-mich ul.timeline-list li .year {
+    display: block; font-weight: 900; font-size: 1.1rem; margin-bottom: 2px;
+}
+.page-ueber-mich ul.timeline-list.border-green li .year { color: #c4d04f; }
+.page-ueber-mich ul.timeline-list.border-red li .year { color: #C31F34; }
+
+/* 7. MITGLIEDSCHAFTEN */
+.page-ueber-mich .members-section .badge {
+    display: block; border: 2px solid #d5d5cb; color: #999;
+    font-weight: 900; font-size: 1.2rem; padding: 1.5rem;
+    margin-bottom: 1rem; border-radius: 8px; transition: 0.3s;
+    background: #fff; text-align: center;
+}
+.page-ueber-mich .members-section .badge:hover {
+    border-color: #c4d04f; color: #c4d04f; background: #fafafa;
+}
+
+/* Mobile Fix */
+@media (max-width: 840px) {
+    .page-ueber-mich .hero-text-col { padding-left: 0; text-align: center; align-items: center; padding-bottom: 2rem; }
+    .page-ueber-mich .hero-text-col h1 { font-size: 2.5rem; }
+    .page-ueber-mich .hero-image-col { order: 2; } /* Bild unter Text auf Handy? Oder order: -1 für oben */
+    .page-ueber-mich .timeline-section .column { margin-bottom: 3rem; }
+}
+/* --- FARBPALETTE --- 
+   Grün: #c4d04f
+   Grau: #d5d5cb
+   Rot:  #C31F34
+   Schwarz: #000000
+   Weiß: #ffffff
+*/
+
+/* Container Tweaks für Full Width Feel */
+.badass-services .container {
+    max-width: 100% !important;
+    padding: 0;
+}
+
+/* --- HERO SECTION --- */
+.service-hero {
+    background: #000000; /* Schwarz */
+    color: #ffffff;
+    padding: 30px 5%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+	min-height: auto;
+    position: relative;
+    overflow: hidden;
+	margin-top: 1.5rem;
+	border-radius: 4px;
+}
+
+/* Grüner Akzent-Hintergrund (abstrakt) */
+.service-hero::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 150px;
+    height: 150px;
+    background: #c4d04f;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.hero-content {
+    flex: 1;
+    min-width: 300px;
+    z-index: 1;
+}
+
+.hero-visual {
+    flex: 0 0 200px;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+
+.service-hero .sub-title {
+    color: #d5d5cb; /* Grau */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.service-hero .main-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.highlight-green {
+    color: #c4d04f;
+    position: relative;
+    display: inline-block;
+}
+
+/* Unterstreichungseffekt für das Grüne Wort */
+.highlight-green::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: rgba(196, 208, 79, 0.3);
+    z-index: -1;
+}
+
+.hero-desc {
+    font-size: 1.2rem;
+    color: #d5d5cb;
+    max-width: 600px;
+    border-left: 4px solid #C31F34; /* Rot */
+    padding-left: 20px;
+}
+
+/* --- SWIPE SLIDER SECTION --- */
+.service-slider-section {
+    background: #f4f4f4; /* Hellgrau Kontrast */
+    padding: 60px 0 100px 0;
+}
+
+.swiper-header {
+    padding: 0 10%;
+    margin-bottom: 40px;
+}
+
+.swiper-header h2 {
+    font-size: 2.5rem;
+    color: #000000;
+    font-weight: 700;
+    border-bottom: 3px solid #c4d04f;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.swiper-header p {
+    color: #C31F34;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Der magische Scrolling Wrapper */
+.scrolling-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+    padding: 20px 5% 60px 5%; /* Platz für Schatten unten */
+    
+    /* Scroll Snap Magic */
+    scroll-snap-type: x mandatory;
+    gap: 30px;
+}
+
+/* Scrollbar verstecken aber Funktion behalten */
+.scrolling-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+.scrolling-wrapper::-webkit-scrollbar-track {
+    background: #d5d5cb; 
+}
+.scrolling-wrapper::-webkit-scrollbar-thumb {
+    background: #C31F34; 
+    border-radius: 4px;
+}
+
+/* --- DIE KARTEN --- */
+.card {
+    flex: 0 0 auto;
+    width: 350px; /* Feste Breite pro Karte */
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    scroll-snap-align: center; /* Zentriert die Karte beim Stoppen */
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.card-image {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Overlay Effekt beim Hover über Bild */
+.card-image::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.3);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.card-image:hover::before {
+    opacity: 1;
+}
+
+.zoom-icon {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: #fff;
+    font-size: 2rem;
+    transition: transform 0.3s;
+    z-index: 2;
+    pointer-events: none;
+}
+.card-image:hover .zoom-icon {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.card-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #000;
+    line-height: 1.2;
+}
+
+.card .intro {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.card .details {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: auto; /* Drückt den Text nach unten wenn Platz ist */
+    padding-top: 15px;
+    border-top: 1px solid #d5d5cb;
+}
+
+/* Mobile Anpassung */
+@media (max-width: 768px) {
+    .service-hero .main-title {
+        font-size: 2.5rem;
+    }
+    .card {
+        width: 85vw; /* Auf Handy fast volle Breite */
+    }
+}
+/* --- BUTTONS IN CARDS --- */
+.btn-more {
+    margin-top: auto; /* Drückt den Button nach unten */
+    background: transparent;
+    border: 2px solid #c4d04f; /* Grün */
+    color: #000;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+.btn-more:hover {
+    background: #c4d04f;
+    color: #fff;
+}
+
+/* --- MODAL / POPUP STYLES --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8); /* Dunkler Hintergrund */
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(5px); /* Cooler Blur Effekt */
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.service-modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    background: #fff;
+    z-index: 9999;
+    border-radius: 15px;
+    padding: 0;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    overflow-y: auto !important;
+    scroll-behavior: auto !important; /* Zwingt den Browser zum sofortigen Springen */
+	-webkit-overflow-scrolling: touch; /* Wichtig für iPhones */
+}
+
+.service-modal.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.service-modal img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-bottom: 5px solid #c4d04f;
+}
+
+.service-modal h2 {
+    padding: 20px 30px 10px 30px;
+    font-size: 2rem;
+    color: #000;
+}
+
+.service-modal .modal-text {
+    padding: 0 30px 30px 30px;
+    font-size: 0.8rem !important;
+    line-height: 1.4; /*engerer Zeilenabstand */
+    color: #444;
+}
+.service-list li {
+    font-size: 0.8rem !important; /* Gleiche Größe wie der Text */
+    line-height: 1.4;
+}
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    line-height: 1;
+    z-index: 10;
+    transition: transform 0.2s;
+}
+
+.close-modal:hover {
+    transform: scale(1.2);
+    color: #c4d04f;
+}
+
+/* Mobile Anpassung Modal */
+@media (max-width: 768px) {
+    .service-modal img {
+        height: 200px;
+    }
+    .service-modal h2 {
+        font-size: 1.5rem;
+    }
+}
